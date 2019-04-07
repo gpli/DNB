@@ -1,3 +1,6 @@
+#' Print DNB object
+#' @export
+
 print.DNB <- function(x) {
     cat("$data\n")
     ramify::pprint(x$data)
