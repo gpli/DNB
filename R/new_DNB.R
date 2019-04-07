@@ -14,7 +14,7 @@
 #'            group = as.factor(sample_info$group))
 #' dnb
 
-new <- function(data, time, group = NULL) {
+new_DNB <- function(data, time, group = NULL) {
     # Check time points
     if (!is.factor(time)) {
         stop("factor required for time points")
