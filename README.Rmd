@@ -1,25 +1,28 @@
-Dynamical Network Biomarkers
-================
+---
+title: "Dynamical Network Biomarkers"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 An R package to calculate Dynamical Network Biomarkers (DNB).
 
 For more information, see:
 
-[Chen L, Liu R, Liu Z-P, Li M, Aihara K. Detecting early-warning signals
-for sudden deterioration of complex diseases by dynamical network
-biomarkers. Scientific Reports. 2012;2:342.
-doi:10.1038/srep00342](https://www.nature.com/articles/srep00342)
+[Chen L, Liu R, Liu Z-P, Li M, Aihara K. Detecting early-warning signals for sudden deterioration of complex diseases by dynamical network biomarkers. Scientific Reports. 2012;2:342. doi:10.1038/srep00342](https://www.nature.com/articles/srep00342)
 
 ## Install
 
-``` r
+```{r eval=FALSE}
 library(devtools)
 install_github("gpli/DNB")
 ```
 
 ## Quick start
 
-``` r
+```{r quick-start, results='hide', warning=FALSE}
 library(DNB)
 
 # Load data
@@ -43,54 +46,36 @@ dnb <- cal_final(dnb)
 dnb_genes <- get_DNB_genes(dnb)
 candidates <- get_candidates(dnb)
 plot_DNB(candidates)
-```
-
-![](README_files/figure-gfm/quick-start-1.png)<!-- -->
-
-``` r
 final <- get_final(dnb)
 plot_DNB(final)
 ```
 
-![](README_files/figure-gfm/quick-start-2.png)<!-- -->
 
 ## Usage
 
 ### Normal samples
-
 Set `group` in `new_DNB` to define normal samples (control group).
 
-``` r
+```{r eval=FALSE}
 dnb <- new_DNB(data = gene_expr,
                time = as.factor(sample_info$time),
                group = as.factor(sample_info$group))
 ```
 
-By default, control group will be considered during searching DNB, but
-you can still change your mind by set `with_ctrl = F` in
-`search_candidates` and `cal_final`. This is useful for tuning
-parameters.
+By default, control group will be considered during searching DNB, but you can still change your mind by set `with_ctrl = F` in `search_candidates` and `cal_final`. This is useful for tuning parameters.
 
 ### Calculating correlation
+Calculating correlation are often memory consuming if there are too many genes, and difficult to load them all if there are too many time points. You can set `use_bigcor = T` to calculate correlation with `propagate::bigcor` and/or set `data_dir` to store correlation data to local, i.e.
 
-Calculating correlation are often memory consuming if there are too many
-genes, and difficult to load them all if there are too many time points.
-You can set `use_bigcor = T` to calculate correlation with
-`propagate::bigcor` and/or set `data_dir` to store correlation data to
-local, i.e.
-
-``` r
+```{r eval=FALSE}
 cal_cor(dnb, use_bigcor = T, data_dir = "tmp")
 ```
 
-It is recommended to pre-filter low expression genes, which will improve
-calculation speed.
+It is recommended to pre-filter low expression genes, which will improve calculation speed.
 
 ### Output
+`plot_DNB` use `ggplot2` to draw results. You can set `outfile` to write into a image file. Further arguments were passed to `ggplot2::ggsave`.
 
-`plot_DNB` use `ggplot2` to draw results. You can set `outfile` to write
-into a image file. Further arguments were passed to `ggplot2::ggsave`.
-
-``` r
+```{r eval=FALSE}
 plot_DNB(final, "DNB_final.pdf")
 ```
