@@ -14,7 +14,7 @@ get_DNB_attr <- function(dnb, time_point, genes_in, with_ctrl = T) {
     score <- cv_in * cor_in / cor_out
 
     # join control samples
-    if (!is.null(dnb$group) & with_ctrl) {
+    if (!is.null(dnb$group) && isTRUE(with_ctrl)) {
         correlation_ctrl <- dnb$correlation_ctrl[[time_point]]
         cv_ctrl <- dnb$CV_ctrl[[time_point]]
 

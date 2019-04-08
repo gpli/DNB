@@ -19,7 +19,7 @@ search_candidates <- function(dnb, min_size = 2, max_size = Inf, included_genes 
             cat("Loading correlation data files ...\n")
             dnb_lite <- dnb
             dnb$correlation[[tp]] <- get_correlation(dnb, tp)
-            if (isTRUE(with_ctrl)) {
+            if (!is.null(dnb$group) && isTRUE(with_ctrl)) {
                 dnb$correlation_ctrl <- get_correlation(dnb, tp, "correlation_ctrl")
             }
         }

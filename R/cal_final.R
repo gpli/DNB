@@ -13,7 +13,7 @@ cal_final <- function(dnb, with_ctrl = T) {
         if (is.null(dim(dnb$correlation[[tp]]))) {
             cat("Loading correlation data files ...\n")
             dnb_full$correlation[[tp]] <- get_correlation(dnb, tp)
-            if (isTRUE(with_ctrl)) {
+            if (!is.null(dnb$group) && isTRUE(with_ctrl)) {
                 dnb_full$correlation_ctrl <- get_correlation(dnb, tp, "correlation_ctrl")
             }
         }
