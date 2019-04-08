@@ -1,7 +1,7 @@
 Package: DNB
 Type: Package
 Title: Dynamical Network Biomarkers
-Version: 0.1.0
+Version: 0.1.1
 Author: Gaopeng Li
 Maintainer: Gaopeng Li <939918989@qq.com>
 Description: Detecting early-warning signals for sudden deterioration of
@@ -12,5 +12,8 @@ LazyData: true
 Imports:
     ramify,
     pbapply,
-    dendextend
-RoxygenNote: 6.1.0
+    dendextend,
+    propagate,
+    ggplot2,
+    cowplot
+RoxygenNote: 6.1.1
