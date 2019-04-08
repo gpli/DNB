@@ -3,6 +3,10 @@
 #' Calculate correlation among genes by sample groups
 #' @param dnb a DNB object
 #' @param adjust_size adjust sample size
+#' @param use_bigcor a logical value, use propagate::bigcor to calculate
+#' correlation which will save some memory, and is sometimes fast
+#' @param data_dir a charactor value, set path to store correlation results
+#' to local RDS files in order to reduce memory pressure
 #' @param ... additional arguments to \code{parpagate::bigcor} or \code{cor}
 #' @return a DNB object
 #' @export
