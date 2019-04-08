@@ -8,7 +8,17 @@
 #' @export
 cal_final <- function(dnb, with_ctrl = T) {
     dnb_genes <- dnb$candidates[[which.max(sapply(dnb$candidates, "[[", "score"))]]$genes
-    dnb$final <- lapply(levels(dnb$time), function(tp) get_DNB_attr(dnb, tp, dnb_genes, with_ctrl = with_ctrl))
+    dnb$final <- lapply(levels(dnb$time), function(tp) {
+        dnb_full <- dnb
+        if (is.null(dim(dnb$correlation[[tp]]))) {
+            cat("Loading correlation data files ...\n")
+            dnb_full$correlation[[tp]] <- get_correlation(dnb, tp)
+            if (isTRUE(with_ctrl)) {
+                dnb_full$correlation_ctrl <- get_correlation(dnb, tp, "correlation_ctrl")
+            }
+        }
+        get_DNB_attr(dnb_full, tp, dnb_genes, with_ctrl = with_ctrl)
+    })
     names(dnb$final) <- levels(dnb$time)
     return(dnb)
 }
