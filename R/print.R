@@ -11,7 +11,11 @@ print.DNB <- function(x) {
         cat("list of length", length(x[[name]]), "\n")
         cat("[[1]]", "\n")
         cat("time point \"", levels(x$time)[1], "\"\n", sep = "")
-        ramify::pprint(x[[name]][[1]])
+        if (is.null(dim(x[[name]][[1]]))) {
+            cat("Local file:", x[[name]][[1]])
+        } else {
+            ramify::pprint(x[[name]][[1]])
+        }
         cat("\n...\n\n")
     }
     for (name in intersect(c("CV", "CV_ctrl"), names(x))) {
