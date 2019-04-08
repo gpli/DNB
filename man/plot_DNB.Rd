@@ -4,14 +4,14 @@
 \alias{plot_DNB}
 \title{Plot DNB}
 \usage{
-plot_DNB(dnb_df, file = "DNB_plot.pdf", height = 7, width = 7)
+plot_DNB(dnb_df, outfile = NULL, ...)
 }
 \arguments{
 \item{dnb_df}{a data frame of DNB result.}
 
-\item{file}{a character string of the output PDF file.}
+\item{outfile}{a character string of the output image file.}
 
-\item{height, width}{the width and height of the graphics region in inches.}
+\item{...}{additional arguments to ggplot2::ggsave}
 }
 \description{
 Plot DNB attibutes from data frame

@@ -4,7 +4,7 @@
 \alias{cal_time_point_stats}
 \title{Calculate time point statictics}
 \usage{
-cal_time_point_stats(dnb, name, FUN, ...)
+cal_time_point_stats(dnb, name, FUN)
 }
 \arguments{
 \item{dnb}{a DNB object}
