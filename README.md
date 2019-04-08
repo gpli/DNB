@@ -13,8 +13,7 @@ doi:10.1038/srep00342](https://www.nature.com/articles/srep00342)
 ## Install
 
 ``` r
-library(devtools)
-install_github("gpli/DNB")
+devtools::install_github("gpli/DNB")
 ```
 
 ## Quick start

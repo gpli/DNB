@@ -16,8 +16,7 @@ For more information, see:
 ## Install
 
 ```{r eval=FALSE}
-library(devtools)
-install_github("gpli/DNB")
+devtools::install_github("gpli/DNB")
 ```
 
 ## Quick start
