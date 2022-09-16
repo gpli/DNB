@@ -1,6 +1,8 @@
 Dynamical Network Biomarkers
 ================
 
+⚠️ **This repository is based on the very early version of DNB, please refer to the latest paper for your research.**
+
 An R package to calculate Dynamical Network Biomarkers (DNB).
 
 For more information, see:
